@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up – ShopNest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body class="auth-page">
+  <script>
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      localStorage.setItem('theme', 'light');
+    }
+  </script>
+
+  <div class="login-container">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Choose a username" required autocomplete="off" />
+        <div id="usernameFeedback" class="feedback"></div>
+      </div>
+      <div class="input-group">
+        <label for="email">Email Address (Gmail only)</label>
+        <input type="email" id="email" placeholder="you@gmail.com" autocomplete="email" required />
+        <div id="emailFeedback" class="feedback"></div>
+      </div>
+      <div class="input-group password-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+        <span class="toggle-password" id="togglePassword">
+          <i class="far fa-eye"></i>
+        </span>
+      </div>
+      <div class="input-group">
+        <label for="otp">Enter OTP</label>
+        <div class="otp-input-wrapper">
+          <input type="text" id="otp" placeholder="12345" inputmode="numeric" maxlength="5" autocomplete="off" />
+          <button type="button" class="get-otp-btn" id="getOtpBtn">Get OTP</button>
+        </div>
+        <div class="resend-timer" id="resendTimer" style="display: none; margin-top: 8px; text-align: right; color: #64748b; font-size: 14px;">
+          Resend in <span id="countdown">30</span>s
+        </div>
+      </div>
+      <button type="submit" class="login-btn">Register</button>
+    </form>
+    <div class="links">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+  <div id="toastContainer"></div>
+  <script>
+    emailjs.init("XdjVi9bwwdY2h9WHD");
+  </script>
+  <script src="scripts/scriptlogin.js"></script>
+</body>
+</html>
